@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-//router.use('/food', require('./food'));
-router.use('/ingredient', require('./ingredient'));
+/* GET home page. */
+router.use('/food', require('./food'));
 
 module.exports = router;
