@@ -7,7 +7,7 @@ const ingredientSchema = new Schema({
     kcal: {type: Number, required: true},
     fats: {type: Number, required: true},
     saturatedFats: {type: Number, required: true},
-    carboHydrates: {Type: Number, required: true},
+    carboHydrates: {type: Number, required: true},
     sugar: {type: String},
     proteins: {type: Number, required: true},
     salt: {type: Number, required: true},

@@ -1,22 +1,28 @@
 const express = require('express');
 const router = express.Router();
-const {convertToNumType} = require('./../helpers/helpers');
 
-router.post('/', function(req, res, next) {
+router.post('/', async function(req, res, next) {
     try {
-        //const Ingredient = require('./../Models/Ingredient');
-        console.log(req.body);
-        const newIngredient = convertToNumType(req.body);
-        console.log(newIngredient);
-        //const ingredientSaved = Ingredient.create(newIngredient);
-        res.status(202).send();
-
+        const Ingredient = require('./../Models/Ingredient');
+        const newIngredient = req.body;
+        const ingredientSaved = await Ingredient.create(newIngredient);
+        res.status(202).json(ingredientSaved);
     }
     catch (error) {
-        console.error(error);
         next(error);
     }
-
 });
+
+router.get('/', async function(req, res, next) {
+    try {
+        const Ingredient = require('./../Models/Ingredient');
+        const foundIngredient = await Ingredient.find(req.query);
+        if (foundIngredient == false) res.status(404).send();
+        else res.status(200).json(foundIngredient);
+    }
+    catch (error) {
+        next(error);
+    }
+})
 
 module.exports = router;
