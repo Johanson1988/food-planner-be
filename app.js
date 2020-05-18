@@ -6,7 +6,7 @@ var logger = require('morgan');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-//const cors = require('cors');
+const cors = require('cors');
 require('dotenv').config();
 const bodyParser = require('body-parser');
 
@@ -26,12 +26,19 @@ mongoose
 
 
   // CORS MIDDLEWARE SETUP
-//app.use(
- // cors({
-  //  credentials: true,
- //   origin: [process.env.PUBLIC_DOMAIN,'http://127.0.0.1'],
-//  }),
-//);
+/*app.use(
+  cors({
+    credentials: true,
+    origin: [/*process.env.PUBLIC_DOMAIN, '*']
+  }),
+);
+*/
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 // SESSION MIDDLEWARE
 app.use(

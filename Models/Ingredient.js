@@ -3,18 +3,18 @@ const Schema = mongoose.Schema;
 
 const ingredientSchema = new Schema({
     //medidas en base a 100g
-    name: {type: String, required: true, unique: true},
-    kcal: {type: Number, required: true},
-    fats: {type: Number, required: true},
-    saturatedFats: {type: Number, required: true},
-    carboHydrates: {type: Number, required: true},
+    name: {type: String, required: true},
+    kcal: {type: Number},
+    fats: {type: Number},
+    saturatedFats: {type: Number},
+    carboHydrates: {type: Number},
     sugar: {type: String},
-    proteins: {type: Number, required: true},
-    salt: {type: Number, required: true},
-    brand: {type: String, required: true, default:'Generic'},
+    proteins: {type: Number},
+    salt: {type: Number},
+    brand: {type: String, default:'Generic'},
     //createdBy: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
-    type: {type: String, enum:["Legumes", "Edible plants", "Edible fungi", "Edible nuts and seeds","Baked goods", "Breads", "Dairy products", "Eggs", "Meat", "Cereals", "Seafood"], required: true},
-    fiber: {type: Number, required: true}
+    //type: {type: String, enum:["Legumes", "Edible plants", "Edible fungi", "Edible nuts and seeds","Baked goods", "Breads", "Dairy products", "Eggs", "Meat", "Cereals", "Seafood"]},
+    fiber: {type: Number}
   }, {
     timestamps: {
       createdAt: 'created_at',
