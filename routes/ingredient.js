@@ -19,7 +19,7 @@ router.get('/', async function(req, res, next) {
     try {
         switch (Object.keys(req.query)[0]) {
             case '_id':
-                console.log(Object.keys(req.query));
+                console.log('query', Object.keys(req.query));
                 const foundIngredient = await Ingredient.find(req.query);
                 if (foundIngredient == false) next(createError(404));
                 else res.status(200).json(foundIngredient);
@@ -31,7 +31,10 @@ router.get('/', async function(req, res, next) {
                 else res.status(200).json(ingredientList);                
                 break;
             default:
-                next(createError(404));
+                const allIngredients = await Ingredient.find();
+                if (allIngredients == false) next(createError(404));
+                else res.status(200).json(allIngredients);
+                //next(createError(404));
                 break;
         }
     }
