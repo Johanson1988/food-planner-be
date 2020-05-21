@@ -21,19 +21,19 @@ router.get('/', async function(req, res, next) {
             case '_id':
                 console.log('query', Object.keys(req.query));
                 const foundIngredient = await Ingredient.find(req.query);
-                if (foundIngredient == false) next(createError(404));
-                else res.status(200).json(foundIngredient);
+                //if (foundIngredient == false) next(createError(404));
+                res.status(200).json(foundIngredient);
                 break;
             case 'name':
                 const { name } = req.query;
                 const ingredientList = await Ingredient.find({ "name" : { "$regex": name, "$options": "i" } }, {name: true});
-                if (ingredientList == false) next(createError(404));
-                else res.status(200).json(ingredientList);                
+                //if (ingredientList == false) next(createError(404));
+                res.status(200).json(ingredientList);                
                 break;
             default:
                 const allIngredients = await Ingredient.find();
-                if (allIngredients == false) next(createError(404));
-                else res.status(200).json(allIngredients);
+                //if (allIngredients == false) next(createError(404));
+                res.status(200).json(allIngredients);
                 //next(createError(404));
                 break;
         }
