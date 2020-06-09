@@ -18,8 +18,7 @@ router.get('/', async function(req, res, next) {
     const createError = require('http-errors');
     try {
         switch (Object.keys(req.query)[0]) {
-            case '_id':
-                console.log('query', Object.keys(req.query));
+            case '_id':                
                 const foundIngredient = await Ingredient.find(req.query);
                 //if (foundIngredient == false) next(createError(404));
                 res.status(200).json(foundIngredient);
