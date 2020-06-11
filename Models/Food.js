@@ -11,6 +11,7 @@ const foodSchema = new Schema({
     sugar: {type: String},
     proteins: {type: Number, required: true},
     salt: {type: Number, required: true},
+    fiber: {type: Number, required: true},
     createdBy: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
     ingredients: [{type: mongoose.Schema.Types.ObjectId, ref: 'Ingredient', required: true}],
     type: {type: String, enum:["vegan", "meat", "fish"], required: true},
