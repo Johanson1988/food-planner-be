@@ -9,7 +9,7 @@ const foodSchema = new Schema({
     fats: {type: Number, required: true},
     saturatedFats: {type: Number, required: true},
     carboHydrates: {type: Number, required: true},
-    sugar: {type: String, required: true},
+    sugar: {type: Number, required: true},
     proteins: {type: Number, required: true},
     salt: {type: Number, required: true},
     fiber: {type: Number, required: true},
