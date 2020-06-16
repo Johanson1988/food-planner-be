@@ -16,6 +16,8 @@ const foodSchema = new Schema({
     //createdBy: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
     ingredients: [{type: mongoose.Schema.Types.Mixed, required: true}],
     type: {type: String, enum:["vegan", "meat", "fish"], required: true},
+    date: {type: Date, required: true},
+    mealType: {type: String, enum:["breakfast", "morning-snack", "lunch", "afternoon-snack", "dinner", "other"], required: true}
   }, {
     timestamps: {
       createdAt: 'created_at',
