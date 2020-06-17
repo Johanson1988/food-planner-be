@@ -72,6 +72,7 @@ app.use(function(err, req, res, next) {
   err.name === 'ValidationError' ? err.status = 400 : null;
   err.name === 'CastError' ? err.status = 404 : null;
   res.status(err.status || 500).send();
+  console.error(err);
 });
 
 module.exports = app;

@@ -20,11 +20,16 @@ router.post('/', async (req, res, next) => {
 
 router.get('/', async function(req, res, next) {
 
+    const { startDate, endDate } = req.query;
+    
     try {
-        const foodList = await Food.find();
-        //if (foodList == false) next(createError(404));
+        const foodList = await Food.find({
+            date: {
+                $gte: startDate,
+                $lt: endDate
+            }
+        });
         res.status(200).json(foodList);
-        //next(createError(404));
     }
     catch (error) {
         next(error);

@@ -15,7 +15,7 @@ router.post('/', async function(req, res, next) {
 
 router.get('/', async function(req, res, next) {
     const Ingredient = require('./../Models/Ingredient');
-    const createError = require('http-errors');
+    //const createError = require('http-errors');
     try {
         switch (Object.keys(req.query)[0]) {
             case '_id':                
